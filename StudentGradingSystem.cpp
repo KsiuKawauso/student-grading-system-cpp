@@ -54,4 +54,102 @@ int main() {
             }
 
     }
+
+        else if (pasirinkimas == 2) {
+            if (MokKiek == 0) {
+                cout << "Mokiniu sarasas tuscias.\n";
+                continue;
+            }
+
+            for (int i = 0; i < MokKiek; i++) {
+                cout << "\nMokinys " << i + 1 << ": " << vard[i] << endl;
+                cout << "Pazymiai: ";
+
+                if (PazKiek[i] == 0) {
+                    cout << "Pazymiu nera";
+                } else {
+                    for (int j = 0; j < PazKiek[i]; j++) {
+                        cout << Paz[i][j] << " ";
+                    }
+                }
+
+                cout << endl;
+            }
+        }
+
+        else if (pasirinkimas == 3) {
+            if (MokKiek == 0) {
+                cout << "Mokiniu sarasas tuscias.\n";
+                continue;
+            }
+
+            int nr;
+            cout << "Iveskite mokinio numeri (1-" << MokKiek << "): ";
+            cin >> nr;
+
+            while (nr < 1 || nr > MokKiek) {
+                cout << "Neteisingas mokinio numeris. Iveskite skaiciu nuo 1 iki " << MokKiek << ": ";
+                cin >> nr;
+            }
+
+            int i = nr - 1;
+            cout << vard[i] << " pazymiai: ";
+
+            if (PazKiek[i] == 0) {
+                cout << "Pazymiu nera";
+            } else {
+                for (int j = 0; j < PazKiek[i]; j++) {
+                    cout << Paz[i][j] << " ";
+                }
+            }
+
+            cout << endl;
+        }
+
+        else if (pasirinkimas == 3) {
+            if (MokKiek == 0) {
+                cout << "Mokiniu sarasas tuscias.\n";
+                continue;
+            }
+
+            int nr, PazNr;
+
+            cout << "Iveskite mokinio numeri (1-" << MokKiek << "): ";
+            cin >> nr;
+
+            while (nr < 1 || nr > MokKiek) {
+                cout << "Neteisingas mokinio numeris. Iveskite skaiciu nuo 1 iki "
+                     << MokKiek << ": ";
+                cin >> nr;
+            }
+
+            int i = nr - 1;
+
+            if (PazKiek[i] == 0) {
+                cout << "Sis mokinys neturi pazymiu.\n";
+                continue;
+            }
+
+            cout << "Iveskite pazymio numeri (1-" << PazKiek[i] << "): ";
+            cin >> PazNr;
+
+            while (PazNr < 1 || PazNr > PazKiek[i]) {
+                cout << "Neteisingas pazymio numeris. Iveskite skaiciu nuo 1 iki " << PazKiek[i] << ": ";
+                cin >> PazNr;
+                   }
+
+            int j = PazNr - 1;
+            int NewPaz;
+
+            cout << "Iveskite nauja pazymi (1-10): ";
+            cin >> NewPaz;
+
+            while (NewPaz < 1 || NewPaz > 10) {
+                cout << "Klaida! Pazymys turi buti nuo 1 iki 10: ";
+                cin >> NewPaz;
+            }
+
+            Paz[i][j] = NewPaz;
+            cout << "Pazymys atnaujintas.\n";
+        }
 }
