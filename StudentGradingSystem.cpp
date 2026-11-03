@@ -34,7 +34,6 @@ int main() {
             break;
         }
 
-        // 1. Mokinio ir pazymiu ivedimas
         if (pasirinkimas == 1) {
             if (MokKiek >= MaxMok) {
                 cout << "Mokiniu sarasas pilnas.\n";
@@ -53,6 +52,19 @@ int main() {
                 cin >> Kiek;
             }
 
+            PazKiek[MokKiek] = Kiek;
+
+            for (int j = 0; j < Kiek; j++) {
+                cout << "Iveskite " << j + 1 << "-aji pazymi (1-10): ";
+                cin >> Paz[MokKiek][j];
+
+                while (Paz[MokKiek][j] < 1 || Paz[MokKiek][j] > 10) {
+                    cout << "Klaida! Pazymys turi buti nuo 1 iki 10: ";
+                    cin >> Paz[MokKiek][j];
+            }
+        }
+    MokKiek++;
+    cout << "Mokinys sekmingai pridetas.\n";
     }
 
         else if (pasirinkimas == 2) {
