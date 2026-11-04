@@ -164,4 +164,76 @@ int main() {
             Paz[i][j] = NewPaz;
             cout << "Pazymys atnaujintas.\n";
         }
+
+        else if (pasirinkimas == 5) {
+            if (MokKiek == 0) {
+                cout << "Mokiniu sarasas tuscias.\n";
+                continue;
+            }
+
+            int nr;
+
+            cout << "Iveskite mokinio numeri (1-" << MokKiek << "): ";
+            cin >> nr;
+
+            while (nr < 1 || nr > MokKiek) {
+                cout << "Neteisingas mokinio numeris. Iveskite skaiciu nuo 1 iki " << MokKiek << ": ";
+                cin >> nr;
+            }
+
+            int i = nr - 1;
+
+            if (PazKiek[i] == 0) {
+                cout << "Sis mokinys neturi pazymiu.\n";
+                continue;
+            }
+
+            double suma = 0;
+
+            for (int j = 0; j < PazKiek[i]; j++) {
+                suma += Paz[i][j];
+            }
+
+            double vidurkis = suma /PazKiek[i];
+
+            cout << fixed << setprecision(2);
+            cout << vard[i] << " pazymiu vidurkis: " << vidurkis << endl;
+        }
+
+
+        else if (pasirinkimas == 6) {
+            if (MokKiek == 0) {
+                cout << "Mokiniu sarasas tuscias.\n";
+                continue;
+            }
+
+            int nr;
+
+            cout << "Iveskite mokinio numeri (1-" << MokKiek << "): ";
+            cin >> nr;
+
+            while (nr < 1 || nr > MokKiek) {
+                cout << "Neteisingas mokinio numeris. Iveskite skaiciu nuo 1 iki " << MokKiek << ": ";
+                cin >> nr;
+            }
+
+            int i = nr - 1;
+
+            for (int j = i; j < MokKiek - 1; j++) {
+                vard[j] = vard[j + 1];
+                PazKiek[j] = PazKiek[j + 1];
+
+                for (int k = 0; k < MaxPaz; k++)
+                    Paz[j][k] = Paz[j + 1][k];
+            }
+        }
+
+        MokKiek--;
+        cout << "Mokinys pasalintas.\n";
+    }
+}
+
+while (true);
+
+return 0;
 }
