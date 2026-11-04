@@ -15,14 +15,15 @@ int main() {
     int pasirinkimas;
 
     do {
-        cout << "\n--- MOKYNIU PAZYMIU SYSTEMA ---\n";
-        cout << "1. Įvesti mokinį ir jo pažymius.\n";
-        cout << "2. Peržiūrėti visų mokinių pažymius.\n";
-        cout << "3. Peržiūrėti konkretaus mokinio pažymius.\n";
-        cout << "4. Atnaujinti pažymį.\n";
-        cout << "5. Apskaičiuoti mokinio vidurkį.\n";
-        cout << "6. Pašalinti mokinį.\n";
-        cout << "7. Įseiti.\n";
+        cout << "\n--- MOKINIU PAZYMIU SISTEMA ---\n";
+        cout << "1. Ivesti mokini ir jo pazymius\n";
+        cout << "2. Perziureti visu mokiniu pazymius\n";
+        cout << "3. Perziureti konkretaus mokinio pazymius\n";
+        cout << "4. Atnaujinti pazymi\n";
+        cout << "5. Apskaiciuoti mokinio vidurki\n";
+        cout << "6. Pasalinti mokini\n";
+        cout << "7. Iseiti\n";
+        cout << "Pasirinkite veiksma: ";
         cin >> pasirinkimas;
 
         if (pasirinkimas < 1 || pasirinkimas > 7) {
@@ -212,38 +213,27 @@ int main() {
             cout << "Iveskite mokinio numeri (1-" << MokKiek << "): ";
             cin >> nr;
 
-            else if (pasirinkimas == 6) {
-                if (MokKiek == 0) {
-                    cout << "Mokiniu sarasas tuscias.\n";
-                    continue;
-                }
-
-                int nr;
-
-                cout << "Iveskite mokinio numeri (1-" << MokKiek << "): ";
+            while (nr < 1 || nr > MokKiek) {
+                cout << "Neteisingas mokinio numeris. Iveskite skaiciu nuo 1 iki "
+                     << MokKiek << ": ";
                 cin >> nr;
-
-                while (nr < 1 || nr > MokKiek) {
-                    cout << "Neteisingas mokinio numeris. Iveskite skaiciu nuo 1 iki "
-                         << MokKiek << ": ";
-                    cin >> nr;
-                }
-
-                int i = nr - 1;
-
-                for (int j = i; j < MokKiek - 1; j++) {
-                    vard[j] = vard[j + 1];
-                    PazKiek[j] = PazKiek[j + 1];
-
-                    for (int k = 0; k < MaxPaz; k++) {
-                        Paz[j][k] = Paz[j + 1][k];
-                    }
-                }
-
-                MokKiek--;
-                cout << "Mokinys pasalintas.\n";
             }
-        } while (true)
+
+            int i = nr - 1;
+
+            for (int j = i; j < MokKiek - 1; j++) {
+                vard[j] = vard[j + 1];
+                PazKiek[j] = PazKiek[j + 1];
+
+                for (int k = 0; k < MaxPaz; k++) {
+                    Paz[j][k] = Paz[j + 1][k];
+                }
+            }
+
+            MokKiek--;
+            cout << "Mokinys pasalintas.\n";
+        }
+        } while (true);
 
     return 0;
 
